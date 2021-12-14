@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Article } from './types/Article';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,12 @@ export class AppComponent implements OnInit {
   title = 'ng-cathay-211214';
   keyword = '123'
 
-  data: any[] = [];
+  data: Article[] = [];
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<any[]>('/api/articles.json').subscribe(data => {
+    this.http.get<Article[]>('/api/articles.json').subscribe(data => {
       this.data = data;
     });
   }
