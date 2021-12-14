@@ -28,4 +28,8 @@ export class AppComponent implements OnInit {
   searchKeyword(text: string) {
     this.keyword = text;
   }
+
+  deleteArticle(id: number) {
+    console.log('您剛剛刪除了編號 ' + id + ' 的文章');
+  }
 }
