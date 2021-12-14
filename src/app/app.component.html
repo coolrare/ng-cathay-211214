@@ -94,9 +94,12 @@
           <div class="widget-content">
             <div id="searchbox">
               <input type="text" placeholder="請輸入搜尋關鍵字" accesskey="s"
-                [(ngModel)]="keyword" (keyup.escape)="clearKeyword()"
+                #mKeyword
+                [value]="keyword"
+                (keyup.escape)="clearKeyword()"
+                (keyup.enter)="searchKeyword(mKeyword.value)"
                 >
-              <input type="button" value="搜尋" id="searchbutton">
+              <input type="button" value="搜尋" (click)="searchKeyword(mKeyword.value)">
               <pre>{{ keyword | json }}</pre>
             </div>
           </div>

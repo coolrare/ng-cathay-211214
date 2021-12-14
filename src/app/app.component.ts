@@ -12,4 +12,8 @@ export class AppComponent {
   clearKeyword() {
     this.keyword = '';
   }
+
+  searchKeyword(text: string) {
+    this.keyword = text;
+  }
 }
