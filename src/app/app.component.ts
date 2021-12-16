@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { DataService } from './data.service';
 import { Article } from './types/Article';
 
@@ -12,14 +13,12 @@ export class AppComponent implements OnInit {
   title = 'ng-cathay-211214';
   keyword = '123'
 
-  data: Article[] = [];
+  data$: Observable<Article[]> = of([]);
 
   constructor(private datasvc: DataService) { }
 
   ngOnInit(): void {
-    this.datasvc.loadArticles().subscribe(data => {
-      this.data = data;
-    })
+    this.data$ = this.datasvc.loadArticles();
   }
 
   clearKeyword() {
@@ -28,6 +27,7 @@ export class AppComponent implements OnInit {
 
   searchKeyword(text: string) {
     this.keyword = text;
+    this.data$ = this.datasvc.loadArticles(text);
   }
 
   deleteArticle(id: number) {

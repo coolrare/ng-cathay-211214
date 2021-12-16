@@ -9,7 +9,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  loadArticles() {
+  loadArticles(keyword?: string) {
     return this.http.get<Article[]>('/api/articles.json');
   }
 }
