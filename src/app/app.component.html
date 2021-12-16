@@ -8,6 +8,7 @@
       <div id="ctl00_cphBody_PostList1_posts" class="posts">
         <!-- Article START-->
 
+        <pre>{{ data$ | async | json }}</pre>
         <app-article *ngFor="let item of data$|async; let i=index"
           [item]="item" (delete)="deleteArticle($event)"></app-article>
 
