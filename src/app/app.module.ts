@@ -9,6 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleComponent } from './article/article.component';
 import { ToASCIIPipe } from './to-ascii.pipe';
+import { ToDbcPipe } from './to-dbc.pipe';
+import { ToSbcPipe } from './to-sbc.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ToASCIIPipe } from './to-ascii.pipe';
     HeaderComponent,
     FooterComponent,
     ArticleComponent,
-    ToASCIIPipe
+    ToASCIIPipe,
+    ToDbcPipe,
+    ToSbcPipe
   ],
   imports: [
     BrowserModule,
