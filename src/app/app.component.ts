@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from './data.service';
 import { Article } from './types/Article';
 
 @Component({
@@ -13,12 +14,12 @@ export class AppComponent implements OnInit {
 
   data: Article[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private datasvc: DataService) { }
 
   ngOnInit(): void {
-    this.http.get<Article[]>('/api/articles.json').subscribe(data => {
+    this.datasvc.loadArticles().subscribe(data => {
       this.data = data;
-    });
+    })
   }
 
   clearKeyword() {
