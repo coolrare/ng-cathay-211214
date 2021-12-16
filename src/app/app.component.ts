@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, shareReplay } from 'rxjs';
 import { DataService } from './data.service';
 import { Article } from './types/Article';
 
@@ -18,7 +18,9 @@ export class AppComponent implements OnInit {
   constructor(private datasvc: DataService) { }
 
   ngOnInit(): void {
-    this.data$ = this.datasvc.loadArticles();
+    this.data$ = this.datasvc.loadArticles().pipe(
+      shareReplay(1)
+    );
   }
 
   clearKeyword() {
